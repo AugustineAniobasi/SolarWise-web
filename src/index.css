@@ -1,10 +1,12 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* Custom Styles */
 
 /* Reset */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -14,7 +16,7 @@
 }
 
 body {
-  line-height: 1.5;
+  line-height: 1.4;
   --webkit-font-smoothing: antialiased;
 }
 
@@ -59,4 +61,72 @@ h6 {
 
 #root {
   isolation: isolate;
+}
+
+/* Custom Theme */
+
+@theme {
+  /* Typography */
+
+  --font-family-sans: "DM Sans", sans-serif;
+
+  /* Color */
+
+  --color-*: initial;
+
+  --color-primary-50: #E9F0FC;
+  --color-primary-100: #BAD0F5;
+  --color-primary-200: #99B9F0;
+  --color-primary-300: #6B98E9;
+  --color-primary-400: #4E85E5;
+  --color-primary-500: #2266DE;
+  --color-primary-600: #1F5DCA;
+  --color-primary-700: #18489E;
+  --color-primary-800: #13387A;
+  --color-primary-900: #0E2B5D;
+
+  --color-success-50: #EAFCE9;
+  --color-success-100: #BDF5BA;
+  --color-success-200: #9DF099;
+  --color-success-300: #71E96B;
+  --color-success-400: #55E54E;
+  --color-success-500: #2BDE22;
+  --color-success-600: #27CA1F;
+  --color-success-700: #1F9E18;
+  --color-success-800: #187A13;
+  --color-success-900: #125D0E;
+
+  --color-warning-50: #FCF3E9;
+  --color-warning-100: #F5D9BA;
+  --color-warning-200: #F0C799;
+  --color-warning-300: #E9AE6B;
+  --color-warning-400: #E59E4E;
+  --color-warning-500: #DE8622;
+  --color-warning-600: #CA7A1F;
+  --color-warning-700: #9E5F18;
+  --color-warning-800: #9E5F18;
+  --color-warning-900: #9E5F18;
+
+  --color-error-50: #FCE9E9;
+  --color-error-100: #F5BABA;
+  --color-error-200: #F09999;
+  --color-error-300: #E96B6B;
+  --color-error-400: #E54E4E;
+  --color-error-500: #DE2222;
+  --color-error-600: #CA1F1F;
+  --color-error-700: #9E1818;
+  --color-error-800: #7A1313;
+  --color-error-900: #5D0E0E;
+
+  --color-neutral-50: #F8F8F8;
+  --color-neutral-100: #E8E8E9;
+  --color-neutral-200: #DDDDDE;
+  --color-neutral-300: #CECECF;
+  --color-neutral-400: #C5C5C6;
+  --color-neutral-500: #B6B6B8;
+  --color-neutral-600: #A6A6A7;
+  --color-neutral-700: #818183;
+  --color-neutral-800: #646465;
+  --color-neutral-900: #4C4C4D;
+
 }
