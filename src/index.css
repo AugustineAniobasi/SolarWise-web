@@ -141,6 +141,12 @@ h6 {
   position: relative;
 }
 
+#primary-nav > li > a {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-900);
+}
+
 #primary-nav > li > a:hover,
 #primary-nav > li > a.active {
   color: var(--color-primary-500);

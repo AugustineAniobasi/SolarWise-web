@@ -6,8 +6,8 @@ import yt from "../assets/icons/yt-icon.svg";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-700 text-neutral-50 rounded-t-[3rem]">
-      <div className="container p-8 mx-auto">
+    <footer className="bg-primary-700 rounded-t-[3rem] text-white">
+      <div className="container mx-auto p-8">
         <div className="flex items-center justify-between">
           <div className="max-w-sm text-left">
             <img src={logo} alt="Solar Wise logo" />
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
 
         <div className="my-6 p-2">
-          <div className="h-[1px] bg-primary-100"></div>
+          <div className="bg-primary-100 h-[1px]"></div>
         </div>
 
         <div className="flex justify-between">
