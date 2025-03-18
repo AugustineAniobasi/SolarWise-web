@@ -1,8 +1,8 @@
-import logo from '../assets/logo.svg';
+import logo from "../assets/logo.svg";
 
 export default function Header() {
   return (
-    <header className="flex items-center h-[80px] w-full">
+    <header className="flex items-center h-[80px] w-full px-8 ">
       <img src={logo} alt="Solar Wise logo" className="mr-auto" />
       <nav className="flex items-center gap-16">
         <ul id="primary-nav" className="flex items-center gap-2">
@@ -35,7 +35,7 @@ export default function Header() {
           <li>
             <a
               href="#sign-up"
-              className="text-neutral-50 border-1 border-primary-500 bg-primary-500 rounded-lg font-semibold hover:bg-primary-50 hover:text-primary-500 hover:border-primary-50 transition duration-300"
+              className="text-neutral-50 border-1 border-primary-500 bg-primary-500 rounded-lg font-semibold hover:bg-primary-50 hover:text-primary-500 hover:border-primary-50"
             >
               Sign up-It's free
             </a>
