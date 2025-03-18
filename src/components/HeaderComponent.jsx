@@ -1,4 +1,5 @@
 import logo from "../assets/logo.svg";
+import Button from "./ButtonComponent";
 
 export default function Header() {
   return (
@@ -25,20 +26,14 @@ export default function Header() {
 
         <ul id="secondary-nav" className="flex items-center gap-2">
           <li>
-            <a
-              href="#sign-in"
-              className="text-primary-500 border-1 border-primary-500 rounded-lg font-semibold"
-            >
+            <Button type="primary" link="sign-in">
               Sign in
-            </a>
+            </Button>
           </li>
           <li>
-            <a
-              href="#sign-up"
-              className="text-neutral-50 border-1 border-primary-500 bg-primary-500 rounded-lg font-semibold hover:bg-primary-50 hover:text-primary-500 hover:border-primary-50"
-            >
+            <Button type="secondary" link="sign-up">
               Sign up-It's free
-            </a>
+            </Button>
           </li>
         </ul>
       </nav>
