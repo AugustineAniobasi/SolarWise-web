@@ -43,15 +43,6 @@ p {
   text-wrap: pretty;
 }
 
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-} */
-
 #root {
   isolation: isolate;
 }
@@ -127,6 +118,29 @@ h6 {
 }
 
 /* Custom Styles */
+
+/* Banner component */
+
+#banner {
+  background: url('./assets/images/banner-vector.svg') var(--color-primary-500);
+  background-repeat: no-repeat;
+  background-position: right center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  padding-inline: 2rem;
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+#banner > button {
+  background: url('./assets/icons/close-circle-fill.svg') no-repeat;
+  aspect-ratio: 1;
+  width: 1.5rem;
+  cursor: pointer;
+}
 
 /* Header component */
 
