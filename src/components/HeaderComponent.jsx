@@ -1,23 +1,27 @@
 import logo from "../assets/logo.svg";
 import Button from "./ButtonComponent";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header className="flex items-center h-[80px] w-full px-8 ">
-      <img src={logo} alt="Solar Wise logo" className="mr-auto" />
+    <header className="flex h-[80px] w-full items-center px-8">
+      <Link to="/" className="mr-auto block">
+        <img src={logo} alt="Solar Wise logo" />
+      </Link>
+
       <nav className="flex items-center gap-16">
         <ul id="primary-nav" className="flex items-center gap-2">
           <li>
-            <a href="#home">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#about-us">About Us</a>
+            <Link to="/about-us">About Us</Link>
           </li>
           <li>
-            <a href="#solar-hub">Solar Hub</a>
+            <Link to="/solar-hub">Solar Hub</Link>
           </li>
           <li>
-            <a href="#assessment-tool">Assessment Tool</a>
+            <Link to="/assessment-tool">Assessment Tool</Link>
           </li>
           <li>
             <a href="#register">Register</a>

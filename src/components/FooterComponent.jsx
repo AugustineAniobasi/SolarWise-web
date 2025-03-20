@@ -3,6 +3,7 @@ import fb from "../assets/icons/fb-icon.svg";
 import ig from "../assets/icons/ig-icon.svg";
 import x from "../assets/icons/x-icon.svg";
 import yt from "../assets/icons/yt-icon.svg";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -10,7 +11,9 @@ export default function Footer() {
       <div className="container mx-auto p-8">
         <div className="flex items-center justify-between">
           <div className="max-w-sm text-left">
-            <img src={logo} alt="Solar Wise logo" />
+            <Link to="/" className="block">
+              <img src={logo} alt="Solar Wise logo" />
+            </Link>
             <p className="mt-5">
               SolarWise is more than just a platform—it’s a movement.
             </p>
