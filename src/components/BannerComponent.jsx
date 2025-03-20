@@ -1,3 +1,10 @@
+/**
+ * Banner component to display a banner with optional content.
+ *
+ * @param {Object} props - The properties object.
+ * @param {React.ReactNode} props.children - The content to display inside the banner.
+ */
+
 export default function Banner(props) {
   function hide() {
     const banner = document.getElementById("banner");
@@ -5,9 +12,15 @@ export default function Banner(props) {
   }
 
   return (
-    <div id="banner">
-      <p>{props.children}</p>
-      <button onClick={hide}></button>
-    </div>
+    <>
+      {props.children ? (
+        <div id="banner">
+          <p>{props.children}</p>
+          <button onClick={hide}></button>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 }
