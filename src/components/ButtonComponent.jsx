@@ -1,4 +1,6 @@
 export default function Button(props) {
+  // Add the necessary classes to the button based on the type prop
+  // type prop should be either "primary" or "secondary"
   const className =
     props.type === "primary"
       ? "text-primary-500 border-1 border-primary-500 rounded-lg font-semibold"
