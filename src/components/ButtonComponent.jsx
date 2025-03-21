@@ -16,7 +16,7 @@ export default function Button(props) {
   return (
     <a
       href={props.link}
-      className={`inline-block px-4 py-2 font-semibold ${className}`}
+      className={`flex w-fit items-center justify-center px-4 py-2 font-semibold ${className}`}
     >
       {props.children}
     </a>
