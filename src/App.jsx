@@ -12,12 +12,14 @@ function App() {
     <Router>
       <Banner />
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/solar-hub" element={<SolarHub />} />
-        <Route path="/assessment-tool" element={<AssessmentTool />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/solar-hub" element={<SolarHub />} />
+          <Route path="/assessment-tool" element={<AssessmentTool />} />
+        </Routes>
+      </main>
       <Footer />
     </Router>
   );

@@ -20,7 +20,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <>
       {/* Hero section */}
       <div className="p-[5rem_2rem]">
         <div className="m-auto flex w-fit items-center gap-6">
@@ -117,6 +117,6 @@ export default function Home() {
           </Button>
         </div>
       </div>
-    </main>
+    </>
   );
 }
