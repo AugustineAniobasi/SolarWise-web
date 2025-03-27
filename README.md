@@ -1,12 +1,70 @@
-# React + Vite
+# SolarWise-web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SolarWise is a web application designed to help users adopts and optimize solar energy usage efficiently.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+solarwise/
+├── frontend/       # Front-end code (HTML, CSS, JavaScript)
+├── backend/        # Back-end code (APIs, database handling)
+├── public/         # Static assets (images, icons, etc.)
+├── components/     # Reusable UI components
+├── services/       # API calls, utilities
+├── config/         # Configuration files
+├── docs/           # Project documentation
+├── tests/          # Testing code
+├── scripts/        # Automation scripts
+├── .github/        # GitHub-specific files (workflows, issue templates)
+├── README.md       # Project overview and setup instructions
+├── .gitignore      # Ignored files for Git
+├── LICENSE         # Open-source license
+└── package.json    # Node.js dependencies (if applicable)
+```
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/your-username/solarwise.git
+   cd solarwise
+   ```
+
+2. **Install dependencies:** (if using Node.js)
+
+   ```sh
+   npm install
+   ```
+
+3. **Run the application:**
+
+   ```sh
+   npm start
+   ```
+
+4. **Open in your browser:**
+   ```
+   http://localhost:3000
+   ```
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch (`feature/your-feature-name`).
+3. Commit your changes with clear messages.
+4. Push to your fork and create a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For inquiries, please contact: [augustineaniobasi@gmail.com](mailto:augustineaniobasi@gmail.com).
+
+---
+
+Happy coding! 🌞
+
+> > > > > > > 728d14813ab9f28dbc19091047289e3ca525a11b
