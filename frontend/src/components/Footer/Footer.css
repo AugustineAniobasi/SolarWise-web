@@ -1,0 +1,27 @@
+.footer-nav {
+  text-align: left;
+}
+
+.footer-nav>li:first-child {
+  font-weight: 700;
+}
+
+.footer-nav>li:not(:first-child) {
+  margin-top: 0.5rem;
+}
+
+.footer-nav>li:not(:first-child)>a {
+  color: var(--color-neutral-50);
+}
+
+.footer-nav>li:not(:first-child)>a:hover {
+  color: var(--color-primary-100);
+}
+
+.social-link>a {
+  transition: transform 0.3s;
+}
+
+.social-link>a:hover {
+  transform: scale(1.1);
+}

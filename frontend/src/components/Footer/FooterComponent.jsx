@@ -1,8 +1,9 @@
-import logo from "../assets/logo-white.svg";
-import fb from "../assets/icons/fb-icon.svg";
-import ig from "../assets/icons/ig-icon.svg";
-import x from "../assets/icons/x-icon.svg";
-import yt from "../assets/icons/yt-icon.svg";
+import logo from "../../assets/logo-white.svg";
+import fb from "../../assets/icons/fb-icon.svg";
+import ig from "../../assets/icons/ig-icon.svg";
+import x from "../../assets/icons/x-icon.svg";
+import yt from "../../assets/icons/yt-icon.svg";
+import "./Footer.css";
 import { Link } from "react-router-dom";
 
 export default function Footer() {

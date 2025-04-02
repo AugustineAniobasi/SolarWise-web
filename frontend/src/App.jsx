@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Banner from "./components/BannerComponent";
-import Header from "./components/HeaderComponent";
-import Footer from "./components/FooterComponent";
-import Home from "./pages/Home";
+import Banner from "./components/Banner/BannerComponent";
+import Header from "./components/Header/HeaderComponent";
+import Footer from "./components/Footer/FooterComponent";
+import Home from "./pages/HomePage/Home";
 import AboutUs from "./pages/AboutUs";
 import SolarHub from "./pages/SolarHub";
-import AssessmentTool from "./pages/AssessmentTool";
+import AssessmentTool from "./pages/AssessmentToolPage/AssessmentTool";
 
 function App() {
   return (

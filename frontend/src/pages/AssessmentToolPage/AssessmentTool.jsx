@@ -1,5 +1,5 @@
 // import appliances from "../data/smp-appl";
-import "../styles/AssessmentTool.css";
+import "./AssessmentTool.css";
 
 export default function AssessmentTool() {
   return (

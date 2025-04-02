@@ -5,6 +5,8 @@
  * @param {React.ReactNode} props.children - The content to display inside the banner.
  */
 
+import "./Banner.css";
+
 export default function Banner(props) {
   function hide() {
     const banner = document.getElementById("banner");

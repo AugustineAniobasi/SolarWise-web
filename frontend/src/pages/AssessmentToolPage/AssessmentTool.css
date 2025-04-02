@@ -1,5 +1,5 @@
 .assessment-hero {
-  background: url('../assets/images/assessment-bg.jpeg') no-repeat;
+  background: url('../../assets/images/assessment-bg.jpeg') no-repeat;
   background-size: cover;
   border-image: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%) fill 1;
 }

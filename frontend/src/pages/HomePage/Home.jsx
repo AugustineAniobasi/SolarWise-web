@@ -1,14 +1,15 @@
 import React from "react";
-import hero from "../assets/images/hero.png";
-import assessment from "../assets/images/vendor-assessment.png";
-import arrowRight from "../assets/icons/arrow-sm-right.svg";
-import Button from "../components/ButtonComponent";
-import Card from "../components/CardComponent";
-import educationPost from "../data/educationPost";
+import hero from "../../assets/images/hero.png";
+import assessment from "../../assets/images/vendor-assessment.png";
+import arrowRight from "../../assets/icons/arrow-sm-right.svg";
+import Button from "../../components/ButtonComponent";
+import Card from "../../components/CardComponent";
+import educationPost from "../../data/educationPost";
 import Slider from "react-slick";
-import sunKing from "../assets/images/sun-king.png";
-import lumos from "../assets/images/lumos.png";
-import solynta from "../assets/images/solynta.png";
+import sunKing from "../../assets/images/sun-king.png";
+import lumos from "../../assets/images/lumos.png";
+import solynta from "../../assets/images/solynta.png";
+import "./Home.css";
 
 export default function Home() {
   const settings = {
