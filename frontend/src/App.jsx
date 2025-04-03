@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route, Outlet, Link, useLocation } from "react-router-dom";
 import Banner from "./components/BannerComponent";
 import Header from "./components/HeaderComponent";
 import Footer from "./components/FooterComponent";
@@ -10,14 +10,17 @@ import AssessmentTool from "./pages/AssessmentTool";
 // Layouts
 
 function RootLayout() {
+  const location = useLocation();
+  const isAuthPage = location.pathname === "/signup";
+
   return (
     <>
-      <Banner />
-      <Header />
+      {!isAuthPage && <Banner />}
+      {!isAuthPage && <Header />}
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {!isAuthPage && <Footer />}
     </>
   );
 }
