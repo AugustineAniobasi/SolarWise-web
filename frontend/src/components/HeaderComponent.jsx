@@ -1,6 +1,6 @@
 import logo from "../assets/logo.svg";
 import Button from "./ButtonComponent";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -12,19 +12,19 @@ export default function Header() {
       <nav className="flex items-center gap-16">
         <ul id="primary-nav" className="flex items-center gap-2">
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/about-us">About Us</Link>
+            <NavLink to="/about-us">About Us</NavLink>
           </li>
           <li>
-            <Link to="/solar-hub">Solar Hub</Link>
+            <NavLink to="/solar-hub">Solar Hub</NavLink>
           </li>
           <li>
-            <Link to="/assessment-tool">Assessment Tool</Link>
+            <NavLink to="/assessment-tool">Assessment Tool</NavLink>
           </li>
           <li>
-            <a href="#register">Register</a>
+            <NavLink to="/register">Register</NavLink>
           </li>
         </ul>
 
