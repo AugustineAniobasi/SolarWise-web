@@ -3,15 +3,15 @@ import Banner from "./components/Banner/BannerComponent";
 import Header from "./components/Header/HeaderComponent";
 import Footer from "./components/Footer/FooterComponent";
 import Home from "./pages/HomePage/Home";
-import AboutUs from "./pages/AboutUs";
-import SolarHub from "./pages/SolarHub";
+import AboutUs from "./pages/AboutUsPage/AboutUs";
+import SolarHub from "./pages/SolarHub/SolarHub";
 import AssessmentTool from "./pages/AssessmentToolPage/AssessmentTool";
 
 function App() {
   return (
     <Router>
       <Banner />
-      <Header />
+      <Header btnName="Sign up as a Vendor" />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

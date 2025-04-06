@@ -1,0 +1,22 @@
+.solar__hub .text__one {
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 52px;
+}
+
+.solar__hub .text__two {
+  font-family: var(--font-family-sans);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+
+/* video Section */
+.videos__article__section{
+    background: url('../../assets/images/vid-image.png') no-repeat;
+    position: center;
+    width: 100%;
+    height: 80vh;
+}

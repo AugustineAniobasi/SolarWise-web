@@ -1,0 +1,25 @@
+.video-container {
+  position: relative;
+}
+
+.custom-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-controls label {
+  margin-right: 10px;
+}
+
+.custom-controls input {
+  width: 100px;
+}
+
+
+/* Video container */
+.video-container {
+  position: relative;
+}

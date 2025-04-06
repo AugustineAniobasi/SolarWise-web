@@ -1,0 +1,27 @@
+/* @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"); */
+
+.search__box {
+  color: white;
+  width: 100%;
+  max-width: 200px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  border-radius: 32px;
+}
+
+.search__box input {
+  border: 1px solid #f8f8f8;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 32px;
+  border-radius: 32px;
+  outline: none;
+}
+.search__box input::placeholder {
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
