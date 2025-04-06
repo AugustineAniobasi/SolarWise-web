@@ -242,15 +242,17 @@ function MediaCarousel({ title, items, isVideo = false }) {
   };
 
   return (
-    <section className="relative videos__article__section">
+    <section className="videos__article__section relative">
       <div className="h-full w-full bg-gradient-to-r from-[#2267de] via-[#2267de9c] to-[#2267de] px-[1rem] py-[2rem]">
-        <div className="mx-auto w-full max-w-[1200px]">
+        <div className="m-auto w-full pl-[5.5rem]">
           <h1 className="mb-3 text-3xl font-bold text-white">{title}</h1>
 
-          <div className="relative px-8">
+          <div
+            className="relative w-full px-4"
+          >
             <Swiper
               spaceBetween={10}
-              slidesPerView={4}
+              slidesPerView={3.5}
               loop={true}
               speed={1000}
               autoplay={{
@@ -272,7 +274,9 @@ function MediaCarousel({ title, items, isVideo = false }) {
             >
               {items.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div className="relative h-[315px] w-full max-w-[304px] overflow-hidden rounded-[1rem] text-white">
+                  <div
+                    className="relative h-[315px] w-full max-w-[578px] overflow-hidden rounded-[1rem] text-white"
+                  >
                     {isVideo ? (
                       <video
                         src={item.vid}
@@ -291,17 +295,18 @@ function MediaCarousel({ title, items, isVideo = false }) {
                     )}
                     <div className="absolute inset-0 z-[1] bg-black/40" />
                     <div className="relative z-[2] flex h-full flex-col justify-end p-4">
-                      <h3 className="mb-2 text-lg font-bold">
-                        {item.description}
-                      </h3>
+                      <h3 className="mb-2 text-[14px]">{item.description}</h3>
                       <button
                         onClick={() =>
                           handleWatchNow(isVideo ? item.vid : item.photo)
                         }
-                        className="cursor-pointer rounded-md px-4 py-2 font-medium text-[#2267de] transition-colors hover:bg-gray-100 w-full max-w-[150px]"
-                        style={{ border: "2px solid white" }}
+                        className="flex w-full max-w-[150px] cursor-pointer items-center gap-3 rounded-md px-4 py-2 font-medium text-[#fff] transition-colors hover:bg-gray-100"
+                        style={{ border: "1px solid white" }}
                       >
                         {isVideo ? "Watch Now" : "Read Now"}
+                        <span>
+                          <i className="bx bx-right-arrow-alt"></i>
+                        </span>
                       </button>
                     </div>
                   </div>
