@@ -20,6 +20,26 @@
   border-radius: 8px;
 }
 
+.appliance-table-row > input::placeholder {
+  color: #818183;
+}
+
+.appliance-table-row > input:disabled::placeholder {
+  opacity: 0.5;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.appliance-table-row > input::-webkit-outer-spin-button,
+.appliance-table-row > input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.appliance-table-row > input[type=number] {
+  appearance: textfield;
+}
+
 .appliance-table-footer > button {
   width: 100%;
   text-align: center;
