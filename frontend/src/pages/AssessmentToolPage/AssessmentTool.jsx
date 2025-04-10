@@ -1,9 +1,12 @@
 import appliances from "@/data/appliances";
 import "./AssessmentTool.css";
 import { useState } from "react";
+import { generateRandomId } from "@/lib/utils";
 
 export default function AssessmentTool() {
-  const [applianceData, setApplianceData] = useState(appliances);
+  const [applianceData, setApplianceData] = useState(
+    appliances.map((appliance) => ({ ...appliance, id: generateRandomId() })),
+  );
   const [results, setResults] = useState({
     totalLoad: 0,
     solarPanelCapacity: 0,
@@ -153,7 +156,7 @@ export default function AssessmentTool() {
                   <span>{results.chargeController}</span>
                 </div>
                 <button
-                  className="bg-primary-500 w-full rounded-lg p-[0.5rem_1rem] text-center font-semibold text-white"
+                  className="bg-primary-500 hover:bg-primary-600 w-full cursor-pointer rounded-lg p-[0.5rem_1rem] text-center font-semibold text-white"
                   id="contact-vendor-button"
                 >
                   Contact a Vendor

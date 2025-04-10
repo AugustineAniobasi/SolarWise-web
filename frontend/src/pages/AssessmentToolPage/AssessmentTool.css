@@ -49,6 +49,11 @@
   color: #fff;
   border-radius: 8px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.appliance-table-footer>button:hover {
+  background-color: #1f5dca;
 }
 
 .calculation-result {
