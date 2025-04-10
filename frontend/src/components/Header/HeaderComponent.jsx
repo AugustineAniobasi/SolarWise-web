@@ -8,7 +8,7 @@ import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react"; // Import useState
 
-export default function Header({ btnName }) {
+export default function Header() {
   const [open, setOpen] = useState(false); // Add state for the sheet
 
   const navItems = [
@@ -38,7 +38,6 @@ export default function Header({ btnName }) {
 
           <SheetContent side="left" className="w-full max-w-xs">
             <HeaderNavLinks
-              btnName={btnName}
               navItems={navItems}
               isMobile={true}
               closeSheet={() => setOpen(false)}
@@ -48,25 +47,21 @@ export default function Header({ btnName }) {
 
         {/* Desktop navigation - hidden on mobile */}
         <div className="hidden lg:block">
-          <HeaderNavLinks
-            btnName={btnName}
-            navItems={navItems}
-            isMobile={false}
-          />
+          <HeaderNavLinks navItems={navItems} isMobile={false} />
         </div>
       </div>
     </header>
   );
 }
 
-function HeaderNavLinks({ btnName, navItems, isMobile, closeSheet }) {
+function HeaderNavLinks({ navItems, isMobile, closeSheet }) {
   return (
     <nav
-      className={`flex ${isMobile ? "flex-col gap-[2rem] pt-[6rem] items-center w-full" : "flex-row items-center gap-16"}`}
+      className={`flex ${isMobile ? "w-full flex-col items-center gap-[2rem] pt-[6rem]" : "flex-row items-center gap-16"}`}
     >
       <ul
         id="primary-nav"
-        className={`flex ${isMobile ? "flex-col gap-[2rem] mx-auto justify-center items-center" : "flex-row items-center gap-4"}`}
+        className={`flex ${isMobile ? "mx-auto flex-col items-center justify-center gap-[2rem]" : "flex-row items-center gap-4"}`}
       >
         {navItems.map((item, index) => (
           <li key={index}>
@@ -112,7 +107,7 @@ function HeaderNavLinks({ btnName, navItems, isMobile, closeSheet }) {
             link="sign-up"
             onClick={isMobile && closeSheet ? closeSheet : undefined}
           >
-            {btnName || "Sign up - It's free"}
+            Sign up - It's free
           </Button>
         </li>
       </ul>

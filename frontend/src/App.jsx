@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Banner />
-      <Header btnName="Sign up as a Vendor" />
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -20,8 +20,6 @@ function App() {
           <Route path="/solar-hub" element={<SolarHub />} />
           <Route path="/assessment-tool" element={<AssessmentTool />} />
           <Route path="/vendor-page" element={<VendorPage />} />
-
-          
         </Routes>
       </main>
       <Footer />
