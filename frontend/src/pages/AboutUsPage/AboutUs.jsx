@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import video from "../../assets/videos/about-us.mp4";
-import "./aboutUs.css"
+import "./aboutUs.css";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
 export default function AboutUs() {
   const videoRef = useRef(null);
-const [volume, setVolume] = useState(0); // Keep track of volume
+  const [volume, setVolume] = useState(0); // Keep track of volume
 
   const handleVolumeChange = (newVolume) => {
     setVolume(newVolume);
@@ -34,7 +34,7 @@ const [volume, setVolume] = useState(0); // Keep track of volume
         />
 
         {/* Custom Volume Control */}
-        <div className="absolute right-5 bottom-5 flex items-center gap-2 rounded-md bg-gray/80 px-3 py-2 shadow-md backdrop-blur-md">
+        <div className="bg-gray/80 absolute right-5 bottom-5 flex items-center gap-2 rounded-md px-3 py-2 shadow-md backdrop-blur-md">
           <div className="w-[140px]">
             <Slider
               min={0}
