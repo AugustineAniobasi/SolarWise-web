@@ -4,15 +4,57 @@ import { useState } from "react";
 
 export default function AssessmentTool() {
   const [applianceData, setApplianceData] = useState(appliances);
+  const [results, setResults] = useState({
+    totalLoad: 0,
+    solarPanelCapacity: 0,
+    inverterRating: 0,
+    chargeController: 0,
+    panelQuantity: 0,
+    inverterBattery: 0,
+  });
 
   function enableAppliance(id) {
     setApplianceData((prevData) =>
       prevData.map((appliance) =>
         appliance.id === id
-          ? { ...appliance, isEnabled: !appliance.isEnabled }
+          ? { ...appliance, isDisabled: !appliance.isDisabled }
           : appliance,
       ),
     );
+  }
+
+  function updateApplianceQuantity(id, quantity) {
+    setApplianceData((prevData) =>
+      prevData.map((appliance) =>
+        appliance.id === id ? { ...appliance, quantity } : appliance,
+      ),
+    );
+  }
+
+  function calculatePower() {
+    const totalLoad = applianceData.reduce(
+      (total, appliance) =>
+        total +
+        (!appliance.isDisabled ? appliance.load * appliance.quantity : 0),
+      0,
+    );
+
+    const solarPanelCapacity = totalLoad * 1.5; // Assuming a 50% buffer
+    const inverterRating = solarPanelCapacity * 1.5; // Assuming a 50% buffer
+    const batterySize = solarPanelCapacity * 2; // Assuming 2 days of autonomy
+    const chargeController = Math.ceil(solarPanelCapacity / 100); // Assuming 100W per panel
+    const panelQuantity = Math.ceil(solarPanelCapacity / 300); // Assuming 300W per panel
+    const inverterBattery = Math.ceil(batterySize / 100); // Assuming 100Ah battery
+
+    setResults((prevData) => ({
+      ...prevData,
+      totalLoad,
+      solarPanelCapacity,
+      inverterRating,
+      chargeController,
+      panelQuantity,
+      inverterBattery,
+    }));
   }
 
   return (
@@ -54,10 +96,16 @@ export default function AssessmentTool() {
                   <input
                     type="number"
                     placeholder="Amount of Appliances?"
-                    disabled={appliance.isEnabled}
+                    disabled={appliance.isDisabled}
+                    onChange={(e) =>
+                      updateApplianceQuantity(
+                        appliance.id,
+                        parseInt(e.target.value) || 0,
+                      )
+                    }
                   />
                   <div>
-                    {!appliance.isEnabled
+                    {!appliance.isDisabled
                       ? appliance.load
                       : "Amount of Power (W)"}
                   </div>
@@ -67,7 +115,7 @@ export default function AssessmentTool() {
 
             <div className="appliance-table-footer flex w-full gap-6">
               <button>Add New Appliance</button>
-              <button>Calculate Power</button>
+              <button onClick={calculatePower}>Calculate Power</button>
             </div>
           </div>
 
@@ -80,29 +128,29 @@ export default function AssessmentTool() {
               <div className="calculation-result">
                 <div>
                   <span>Total Load: </span>
-                  <span>0 watts</span>
+                  <span>{results.totalLoad} watts</span>
                 </div>
                 <div>
                   <span>Solar Panel Capacity in Watt </span>
-                  <span>0 watts</span>
+                  <span>{results.solarPanelCapacity} watts</span>
                 </div>
                 <div>
                   <span>Recommended inverter rating </span>
-                  <span>0 watts</span>
+                  <span>{results.inverterRating} watts</span>
                 </div>
               </div>
               <div className="calculation-result">
                 <div>
                   <span>Solar Panel Quantity: </span>
-                  <span>0</span>
+                  <span>{results.panelQuantity}</span>
                 </div>
                 <div>
                   <span>Inverter Battery: </span>
-                  <span>0</span>
+                  <span>{results.inverterBattery}</span>
                 </div>
                 <div>
                   <span>Charge Controller: </span>
-                  <span>0</span>
+                  <span>{results.chargeController}</span>
                 </div>
                 <button
                   className="bg-primary-500 w-full rounded-lg p-[0.5rem_1rem] text-center font-semibold text-white"
