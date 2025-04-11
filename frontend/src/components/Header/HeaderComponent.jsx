@@ -6,10 +6,10 @@ import Button from "../ButtonComponent";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react"; // Import useState
+import { useState } from "react"; 
 
-export default function Header({ btnName }) {
-  const [open, setOpen] = useState(false); // Add state for the sheet
+export default function Header() {
+  const [open, setOpen] = useState(false); 
 
   const navItems = [
     { to: "/", label: "Home" },
@@ -29,7 +29,6 @@ export default function Header({ btnName }) {
         {/* Mobile navigation */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            {/* Replace Button with a simple button for testing */}
             <button className="flex items-center justify-center p-2 lg:hidden">
               <MdMenu className="h-6 w-6 cursor-pointer" />
               <span className="sr-only">Toggle header menu</span>
@@ -38,7 +37,6 @@ export default function Header({ btnName }) {
 
           <SheetContent side="left" className="w-full max-w-xs">
             <HeaderNavLinks
-              btnName={btnName}
               navItems={navItems}
               isMobile={true}
               closeSheet={() => setOpen(false)}
@@ -49,7 +47,6 @@ export default function Header({ btnName }) {
         {/* Desktop navigation - hidden on mobile */}
         <div className="hidden lg:block">
           <HeaderNavLinks
-            btnName={btnName}
             navItems={navItems}
             isMobile={false}
           />
@@ -59,7 +56,7 @@ export default function Header({ btnName }) {
   );
 }
 
-function HeaderNavLinks({ btnName, navItems, isMobile, closeSheet }) {
+function HeaderNavLinks({navItems, isMobile, closeSheet }) {
   return (
     <nav
       className={`flex ${isMobile ? "flex-col gap-[2rem] pt-[6rem] items-center w-full" : "flex-row items-center gap-16"}`}
@@ -112,7 +109,7 @@ function HeaderNavLinks({ btnName, navItems, isMobile, closeSheet }) {
             link="sign-up"
             onClick={isMobile && closeSheet ? closeSheet : undefined}
           >
-            {btnName || "Sign up - It's free"}
+            {"Sign up - It's free"}
           </Button>
         </li>
       </ul>

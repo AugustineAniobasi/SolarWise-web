@@ -1,0 +1,29 @@
+.blog__container h3 {
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 52px;
+  letter-spacing: -0.18px;
+  color: #e9f0fc;
+}
+
+.blog__text__container{
+    padding-top: 20px;
+}
+
+.blog__text__container p {
+  font-family: var(--font-family-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.18px;
+  margin-bottom: 20px;
+}
+
+.blog__text__container ol li,
+.blog__text__container .heading__text {
+  font-family: var(--font-family-sans);
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.18px;
+}
