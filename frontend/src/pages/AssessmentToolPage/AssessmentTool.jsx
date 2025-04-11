@@ -16,6 +16,7 @@ export default function AssessmentTool() {
     inverterBattery: 0,
   });
 
+  // When user clicks on the appliance name, it will enable the input field for quantity
   function enableAppliance(id) {
     setApplianceData((prevData) =>
       prevData.map((appliance) =>
@@ -26,6 +27,7 @@ export default function AssessmentTool() {
     );
   }
 
+  // When user changes the quantity of the appliance, it will update the state
   function updateApplianceQuantity(id, quantity) {
     setApplianceData((prevData) =>
       prevData.map((appliance) =>
@@ -34,6 +36,8 @@ export default function AssessmentTool() {
     );
   }
 
+  /* When user clicks on the calculate button, it will calculate the power consumption
+  and update the state with the results */
   function calculatePower() {
     const totalLoad = applianceData.reduce(
       (total, appliance) =>
@@ -58,6 +62,28 @@ export default function AssessmentTool() {
       panelQuantity,
       inverterBattery,
     }));
+  }
+
+  // When user clicks on the add new appliance button, it will open/close a modal to add a new appliance
+  function toggleAddApplianceModal() {
+    const modal = document.querySelector(".add-appliance-modal");
+    modal.classList.toggle("hidden");
+  }
+
+  // When user submits the form to add a new appliance, it will add the appliance to the state
+  function addAppliance(e) {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const quantity = parseInt(e.target.quantity.value) || 0;
+    const load = parseInt(e.target.load.value) || 0;
+
+    if (name && quantity && load) {
+      setApplianceData((prevData) => [
+        ...prevData,
+        { id: generateRandomId(), name, quantity, load, isDisabled: false },
+      ]);
+      toggleAddApplianceModal();
+    }
   }
 
   return (
@@ -100,6 +126,7 @@ export default function AssessmentTool() {
                     type="number"
                     placeholder="Amount of Appliances?"
                     disabled={appliance.isDisabled}
+                    value={appliance.quantity > 0 ? appliance.quantity : ""}
                     onChange={(e) =>
                       updateApplianceQuantity(
                         appliance.id,
@@ -117,7 +144,9 @@ export default function AssessmentTool() {
             </div>
 
             <div className="appliance-table-footer flex w-full gap-6">
-              <button>Add New Appliance</button>
+              <button onClick={toggleAddApplianceModal}>
+                Add New Appliance
+              </button>
               <button onClick={calculatePower}>Calculate Power</button>
             </div>
           </div>
@@ -155,15 +184,49 @@ export default function AssessmentTool() {
                   <span>Charge Controller: </span>
                   <span>{results.chargeController}</span>
                 </div>
-                <button
-                  className="bg-primary-500 hover:bg-primary-600 w-full cursor-pointer rounded-lg p-[0.5rem_1rem] text-center font-semibold text-white"
-                  id="contact-vendor-button"
-                >
+                <button className="bg-primary-500 hover:bg-primary-600 w-full cursor-pointer rounded-lg p-[0.5rem_1rem] text-center font-semibold text-white">
                   Contact a Vendor
                 </button>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="add-appliance-modal fixed top-0 left-0 z-100 hidden h-full w-full">
+        <div className="absolute top-0 left-0 z-100 h-full w-full bg-black opacity-80"></div>
+        <div className="absolute top-[50%] left-[50%] z-100 m-auto w-full max-w-[997px] translate-x-[-50%] translate-y-[-50%] rounded-lg bg-white p-12">
+          <div className="flex justify-end">
+            <button
+              className="ml-auto flex w-fit cursor-pointer items-center justify-center"
+              onClick={toggleAddApplianceModal}
+            >
+              <i className="bx bx-exit bx-sm"></i>
+            </button>
+          </div>
+          <p className="text-center text-[2rem] text-neutral-900">
+            Add your own appliance
+          </p>
+          <form action="" onSubmit={addAppliance}>
+            <div className="add-appliance-form mb-8 flex flex-col gap-4">
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" placeholder="Enter appliance name" />
+              <label htmlFor="quantity">Quantity</label>
+              <input type="number" id="quantity" placeholder="Enter quantity" />
+              <label htmlFor="load">Load (W)</label>
+              <input
+                type="number"
+                id="load"
+                placeholder="Enter appliance load"
+              />
+            </div>
+            <button
+              className="bg-primary-500 hover:bg-primary-600 w-full cursor-pointer rounded-lg p-[0.5rem_1rem] text-center font-semibold text-white"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </div>
     </>
