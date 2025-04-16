@@ -9,10 +9,10 @@ import categoryOne from "../../assets/images/categoryOne.png";
 import categoryTwo from "../../assets/images/categoryTwo.png";
 import categoryThree from "../../assets/images/categoryThree.png";
 import categoryFour from "../../assets/images/categoryFour.png";
-// import categoryFive from "../../assets/images/categoryFive.png"
-// import categorySix from "../../assets/images/categorySix.png"
-// import categorySeven from "../../assets/images/categorySeven.png"
-// import categoryEight from "../../assets/images/categoryEight.png"
+import categoryFive from "../../assets/images/categoryFive.png";
+import categorySix from "../../assets/images/categorySix.png";
+import categorySeven from "../../assets/images/categorySeven.png";
+import categoryEight from "../../assets/images/categoryEight.png";
 
 import videoOne from "../../assets/videos/solarVidOne.mp4";
 import videoTwo from "../../assets/videos/solarVidTwo.mp4";
@@ -29,6 +29,7 @@ import articleOne from "../../assets/images/articleOne.png";
 import articleTwo from "../../assets/images/articleTwo.png";
 import articleThree from "../../assets/images/articleThree.png";
 import articleFour from "../../assets/images/articleFour.png";
+import Card from "@/components/CardComponent";
 
 const videosSection = [
   {
@@ -101,6 +102,110 @@ const articlesSection = [
 ];
 
 function SolarHub() {
+  function CategorySection() {
+    return (
+      <div className="section">
+        <h1 className="text-primary-500 mb-8 text-3xl font-bold">Categories</h1>
+
+        <div className="grid grid-cols-[repeat(auto-fit,_minmax(0,_304px))] gap-4">
+          {[
+            {
+              image: categoryOne,
+              title: "Getting Started",
+              description: "(Solar Basics & How it Works)",
+            },
+            {
+              image: categoryTwo,
+              title: "Installation & Setup",
+              description: "(Step-by-Step Guides & DIY Tips)",
+            },
+            {
+              image: categoryThree,
+              title: "Maintenance & Care",
+              description: "(Keeping Your Solar System Efficient)",
+            },
+            {
+              image: categoryFour,
+              title: "FInancing & Incentives",
+              description: "(Payment Plans & Government Policies)",
+            },
+            {
+              image: categoryFive,
+              title: "Troubleshooting & FAQs",
+              description: "(Common Issues & Fixes)",
+            },
+            {
+              image: categorySix,
+              title: "Solar Technology",
+              description: "(Latest Innovations & Trends)",
+            },
+            {
+              image: categorySeven,
+              title: "Solar Energy Policy",
+              description: "(Regulations & Incentives)",
+            },
+            {
+              image: categoryEight,
+              title: "Solar Community",
+              description: "(Connect with Other Solar Enthusiasts)",
+            },
+          ].map((category, index) => (
+            <Card
+              for="category"
+              key={index}
+              image={category.image}
+              title={category.title}
+              content={category.description}
+              link="#"
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  function BlogsSection() {
+    return (
+      <div className="section">
+        <h1 className="text-primary-500 mb-8 text-3xl font-bold">Blogs</h1>
+
+        <div className="grid w-full grid-cols-1 place-items-stretch justify-items-center gap-4 overflow-hidden sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {[
+            {
+              image: categoryOne,
+              title: "Getting Started",
+              description: "(Solar Baiscs & How it Works)",
+            },
+            {
+              image: categoryTwo,
+              title: "Installation & Setup",
+              description: "(Step-by-Step Guides & DIY Tips)",
+            },
+            {
+              image: categoryThree,
+              title: "Maintaince & Care",
+              description: "(Keeping Your Solar System Efficient)",
+            },
+            {
+              image: categoryFour,
+              title: "FInancing & Incentives",
+              description: "(Payment Plans & Government Ploicies)",
+            },
+          ].map((category, index) => (
+            <Card
+              for="category"
+              key={index}
+              image={category.image}
+              title={category.title}
+              content={category.description}
+              link="#"
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <section className="solar__hub relative">
@@ -137,87 +242,6 @@ function SolarHub() {
 
 export default SolarHub;
 
-function CategorySection() {
-  const categories = [
-    {
-      image: categoryOne,
-      title: "Getting Started",
-      description: "(Solar Baiscs & How it Works)",
-    },
-    {
-      image: categoryTwo,
-      title: "Installation & Setup",
-      description: "(Step-by-Step Guides & DIY Tips)",
-    },
-    {
-      image: categoryThree,
-      title: "Maintaince & Care",
-      description: "(Keeping Your Solar System Efficient)",
-    },
-    {
-      image: categoryFour,
-      title: "FInancing & Incentives",
-      description: "(Payment Plans & Government Ploicies)",
-    },
-  ];
-
-  const catTextOneStyles = {
-    color: "var(--color-primary-500)",
-    fontWeight: 700,
-    fontSize: "20px",
-    lineHeight: "28px",
-    fontFamily: "var(--font-family-sans)",
-  };
-
-  const catTextTwoStyles = {
-    fontFamily: "var(--font-family-sans)",
-    fontWeight: 600,
-    fontSize: "14px",
-    lineHeight: "20px",
-    letterSpacing: "-0.18px",
-  };
-
-  return (
-    <section>
-      <div className="category__section m-auto max-w-[1200px] py-[2rem]">
-        <h1 className="mb-8 text-3xl font-bold text-[#2266DE]">Categories</h1>
-
-        <div className="grid w-full grid-cols-1 place-items-stretch justify-items-center gap-4 overflow-hidden sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {categories.map((category, index) => (
-            <div
-              key={index}
-              className="category__card mb-8 flex w-full flex-col gap-4 rounded-xl bg-[#0420532E] pb-[4rem] shadow-md transition-shadow duration-300 ease-in-out hover:shadow-lg"
-            >
-              <div className="h-[211px] w-full overflow-hidden rounded-t-xl">
-                <img
-                  src={category.image || "/placeholder.svg"}
-                  alt={category.title}
-                  className="h-full w-full rounded-t-xl"
-                />
-              </div>
-
-              <div className="flex flex-col justify-center">
-                <h2
-                  style={catTextOneStyles}
-                  className="mb-[10px] p-4 text-xl font-bold"
-                >
-                  {category.title}
-                </h2>
-                <p
-                  className="w-full px-4 py-2 text-gray-500"
-                  style={catTextTwoStyles}
-                >
-                  {category.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // Reusable carousel component
 function MediaCarousel({ title, items, isVideo = false }) {
   const swiperRef = useRef(null);
@@ -242,14 +266,12 @@ function MediaCarousel({ title, items, isVideo = false }) {
   };
 
   return (
-    <section className="videos__article__section relative">
+    <section className="videos__article__section full-bleed relative">
       <div className="h-full w-full bg-gradient-to-r from-[#2267de] via-[#2267de9c] to-[#2267de] px-[1rem] py-[2rem]">
         <div className="m-auto w-full pl-[5.5rem]">
           <h1 className="mb-3 text-3xl font-bold text-white">{title}</h1>
 
-          <div
-            className="relative w-full px-4"
-          >
+          <div className="relative w-full px-4">
             <Swiper
               spaceBetween={10}
               slidesPerView={3.5}
@@ -274,9 +296,7 @@ function MediaCarousel({ title, items, isVideo = false }) {
             >
               {items.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div
-                    className="relative h-[315px] w-full max-w-[578px] overflow-hidden rounded-[1rem] text-white"
-                  >
+                  <div className="relative h-[315px] w-full max-w-[578px] overflow-hidden rounded-[1rem] text-white">
                     {isVideo ? (
                       <video
                         src={item.vid}
@@ -362,86 +382,5 @@ function VideosArticlesSection() {
       <MediaCarousel title="Videos" items={videosSection} isVideo={true} />
       <MediaCarousel title="Articles" items={articlesSection} isVideo={false} />
     </>
-  );
-}
-
-function BlogsSection() {
-  const categories = [
-    {
-      image: categoryOne,
-      title: "Getting Started",
-      description: "(Solar Baiscs & How it Works)",
-    },
-    {
-      image: categoryTwo,
-      title: "Installation & Setup",
-      description: "(Step-by-Step Guides & DIY Tips)",
-    },
-    {
-      image: categoryThree,
-      title: "Maintaince & Care",
-      description: "(Keeping Your Solar System Efficient)",
-    },
-    {
-      image: categoryFour,
-      title: "FInancing & Incentives",
-      description: "(Payment Plans & Government Ploicies)",
-    },
-  ];
-
-  const catTextOneStyles = {
-    color: "var(--color-primary-500)",
-    fontWeight: 700,
-    fontSize: "20px",
-    lineHeight: "28px",
-    fontFamily: "var(--font-family-sans)",
-  };
-
-  const catTextTwoStyles = {
-    fontFamily: "var(--font-family-sans)",
-    fontWeight: 600,
-    fontSize: "14px",
-    lineHeight: "20px",
-    letterSpacing: "-0.18px",
-  };
-
-  return (
-    <section>
-      <div className="category__section m-auto max-w-[1200px] py-[2rem]">
-        <h1 className="mb-8 text-3xl font-bold text-[#2266DE]">Blogs</h1>
-
-        <div className="grid w-full grid-cols-1 place-items-stretch justify-items-center gap-4 overflow-hidden sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {categories.map((category, index) => (
-            <div
-              key={index}
-              className="category__card mb-8 flex w-full flex-col gap-4 rounded-xl bg-[#0420532E] pb-[4rem] shadow-md transition-shadow duration-300 ease-in-out hover:shadow-lg"
-            >
-              <div className="h-[211px] w-full overflow-hidden rounded-t-xl">
-                <img
-                  src={category.image || "/placeholder.svg"}
-                  alt={category.title}
-                  className="h-full w-full rounded-t-xl"
-                />
-              </div>
-
-              <div className="flex flex-col justify-center">
-                <h2
-                  style={catTextOneStyles}
-                  className="mb-[10px] p-4 text-xl font-bold"
-                >
-                  {category.title}
-                </h2>
-                <p
-                  className="w-full px-4 py-2 text-gray-500"
-                  style={catTextTwoStyles}
-                >
-                  {category.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }

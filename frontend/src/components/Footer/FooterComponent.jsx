@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-700 rounded-t-[3rem] text-white">
-      <div className="container mx-auto p-8">
+    <footer className="wrapper bg-primary-700 rounded-t-[3rem] text-white">
+      <div className="full-bleed p-8">
         <div className="flex items-center justify-between">
           <div className="max-w-sm text-left">
             <Link to="/" className="block">

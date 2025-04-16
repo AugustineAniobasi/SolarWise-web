@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import hero from "../../assets/images/hero.png";
 import assessment from "../../assets/images/vendor-assessment.png";
 import arrowRight from "../../assets/icons/arrow-sm-right.svg";
@@ -12,20 +12,49 @@ import solynta from "../../assets/images/solynta.png";
 import "./Home.css";
 
 export default function Home() {
+  const [slidesToShow, setSlidesToShow] = useState(
+    showSlides(document.documentElement.clientWidth),
+  );
+
+  function showSlides(screenWidth) {
+    return screenWidth < 576
+      ? 1
+      : screenWidth < 768
+        ? 2
+        : screenWidth < 1200
+          ? 3
+          : 5;
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = document.documentElement.clientWidth;
+      setSlidesToShow(showSlides(screenWidth));
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    cssEase: "linear",
   };
 
   return (
     <>
       {/* Hero section */}
-      <div className="p-[5rem_2rem]">
-        <div className="m-auto flex w-fit items-center gap-6">
-          <div className="max-w-[560px]">
+      <div className="section">
+        <div className="m-auto flex w-fit items-center gap-6 max-lg:flex-col">
+          <div>
             <h1 className="mb-10 text-[64px] font-semibold">
               Find the <span className="text-primary-500">Right Solar</span>{" "}
               Solution Today"
@@ -40,7 +69,7 @@ export default function Home() {
             </div>
           </div>
           <img
-            className="max-w-[588px]"
+            className="max-w-full max-lg:w-full max-lg:max-w-full"
             src={hero}
             alt="A solar energy technician wearing a blue hard hat and high-visibility vest, inspecting solar panels while holding a tablet."
           />
@@ -48,7 +77,7 @@ export default function Home() {
       </div>
 
       {/* Education section */}
-      <div className="home_education-section relative z-2 p-[5rem_2rem]">
+      <div className="full-bleed home_education-section section relative z-2">
         <h2 className="mb-2 text-center text-5xl font-semibold text-white">
           Solar Facts & Insights
         </h2>
@@ -72,23 +101,23 @@ export default function Home() {
       </div>
 
       {/* Assesment section */}
-      <div className="p-[5rem_2rem]">
+      <div className="section">
         <h2 className="text-primary-500 mb-20 text-[32px] font-semibold">
           Solar Need Assessment Tool
         </h2>
-        <div className="m-auto flex w-fit items-center gap-6">
+        <div className="flex items-center gap-6 max-lg:flex-col">
           <img
-            className="max-w-[588px]"
+            className="max-w-[588px] max-lg:w-full max-lg:max-w-full"
             src={assessment}
             alt="A modern house with solar panels installed on the roof, surrounded by greenery and a landscaped yard."
           />
-          <div className="max-w-[560px]">
+          <div>
             <h3 className="mb-10 text-[64px] font-semibold">
               Find the <span className="text-primary-500">Perfect Solar</span>{" "}
               Solution for your <span className="text-primary-500">Need</span>"
             </h3>
             <div className="flex items-center gap-2">
-              <Button type="secondary" link="#">
+              <Button type="secondary" link="/assessment-tool">
                 Start Assessment
                 <img
                   src={arrowRight}
@@ -103,11 +132,11 @@ export default function Home() {
       </div>
 
       {/* Top Vendors */}
-      <div className="p-[5rem_2rem]">
+      <div className="section">
         <h2 className="text-primary-500 mb-4 text-[32px] font-semibold">
           Our Vendors
         </h2>
-        <div className="flex items-center justify-center gap-[124px]">
+        <div className="flex shrink-1 items-center justify-center gap-[124px] max-lg:gap-[2rem] max-md:flex-wrap">
           <img src={sunKing} alt="" />
           <img src={lumos} alt="" />
           <img src={solynta} alt="" />

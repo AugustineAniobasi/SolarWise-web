@@ -88,7 +88,7 @@ export default function AssessmentTool() {
 
   return (
     <>
-      <div className="assessment-hero flex h-[500px] items-end">
+      <div className="assessment-hero full-bleed flex h-[500px] items-end">
         <h1 className="mb-10 ml-28 text-[44px] font-bold text-white">
           <span className="block">Assessment Tool</span>{" "}
           <span>Calculate your power consumption</span>
