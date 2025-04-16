@@ -17,7 +17,7 @@ export default function AssessmentTool() {
   });
 
   // When user clicks on the appliance name, it will enable the input field for quantity
-  function enableAppliance(id) {
+  const enableAppliance = function (id) {
     setApplianceData((prevData) =>
       prevData.map((appliance) =>
         appliance.id === id
@@ -25,20 +25,20 @@ export default function AssessmentTool() {
           : appliance,
       ),
     );
-  }
+  };
 
   // When user changes the quantity of the appliance, it will update the state
-  function updateApplianceQuantity(id, quantity) {
+  const updateApplianceQuantity = function (id, quantity) {
     setApplianceData((prevData) =>
       prevData.map((appliance) =>
         appliance.id === id ? { ...appliance, quantity } : appliance,
       ),
     );
-  }
+  };
 
   /* When user clicks on the calculate button, it will calculate the power consumption
   and update the state with the results */
-  function calculatePower() {
+  const calculatePower = function () {
     const totalLoad = applianceData.reduce(
       (total, appliance) =>
         total +
@@ -62,16 +62,16 @@ export default function AssessmentTool() {
       panelQuantity,
       inverterBattery,
     }));
-  }
+  };
 
   // When user clicks on the add new appliance button, it will open/close a modal to add a new appliance
-  function toggleAddApplianceModal() {
+  const toggleAddApplianceModal = function () {
     const modal = document.querySelector(".add-appliance-modal");
     modal.classList.toggle("hidden");
-  }
+  };
 
   // When user submits the form to add a new appliance, it will add the appliance to the state
-  function addAppliance(e) {
+  const addAppliance = function (e) {
     e.preventDefault();
     const name = e.target.name.value;
     const quantity = parseInt(e.target.quantity.value) || 0;
@@ -84,7 +84,7 @@ export default function AssessmentTool() {
       ]);
       toggleAddApplianceModal();
     }
-  }
+  };
 
   return (
     <>

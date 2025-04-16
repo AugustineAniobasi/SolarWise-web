@@ -12,7 +12,7 @@ import solynta from "../../assets/images/solynta.png";
 import "./Home.css";
 
 export default function Home() {
-  const [slidesToShow, setSlidesToShow] = useState(
+  const [slides, setSlides] = useState(
     showSlides(document.documentElement.clientWidth),
   );
 
@@ -23,13 +23,15 @@ export default function Home() {
         ? 2
         : screenWidth < 1200
           ? 3
-          : 5;
+          : screenWidth < 1440
+            ? 4
+            : 5;
   }
 
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = document.documentElement.clientWidth;
-      setSlidesToShow(showSlides(screenWidth));
+      setSlides(showSlides(screenWidth));
     };
 
     window.addEventListener("resize", handleResize);
@@ -42,7 +44,7 @@ export default function Home() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: slidesToShow,
+    slidesToShow: slides,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -100,7 +102,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Assesment section */}
+      {/* Assessment section */}
       <div className="section">
         <h2 className="text-primary-500 mb-20 text-[32px] font-semibold">
           Solar Need Assessment Tool

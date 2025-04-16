@@ -102,113 +102,109 @@ const articlesSection = [
 ];
 
 function SolarHub() {
-  function CategorySection() {
-    return (
-      <div className="section">
-        <h1 className="text-primary-500 mb-8 text-3xl font-bold">Categories</h1>
+  const CategorySection = () => (
+    <div className="section">
+      <h1 className="text-primary-500 mb-8 text-3xl font-bold">Categories</h1>
 
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(0,_304px))] gap-4">
-          {[
-            {
-              image: categoryOne,
-              title: "Getting Started",
-              description: "(Solar Basics & How it Works)",
-            },
-            {
-              image: categoryTwo,
-              title: "Installation & Setup",
-              description: "(Step-by-Step Guides & DIY Tips)",
-            },
-            {
-              image: categoryThree,
-              title: "Maintenance & Care",
-              description: "(Keeping Your Solar System Efficient)",
-            },
-            {
-              image: categoryFour,
-              title: "FInancing & Incentives",
-              description: "(Payment Plans & Government Policies)",
-            },
-            {
-              image: categoryFive,
-              title: "Troubleshooting & FAQs",
-              description: "(Common Issues & Fixes)",
-            },
-            {
-              image: categorySix,
-              title: "Solar Technology",
-              description: "(Latest Innovations & Trends)",
-            },
-            {
-              image: categorySeven,
-              title: "Solar Energy Policy",
-              description: "(Regulations & Incentives)",
-            },
-            {
-              image: categoryEight,
-              title: "Solar Community",
-              description: "(Connect with Other Solar Enthusiasts)",
-            },
-          ].map((category, index) => (
-            <Card
-              for="category"
-              key={index}
-              image={category.image}
-              title={category.title}
-              content={category.description}
-              link="#"
-            />
-          ))}
-        </div>
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(0,_304px))] gap-4">
+        {[
+          {
+            image: categoryOne,
+            title: "Getting Started",
+            description: "(Solar Basics & How it Works)",
+          },
+          {
+            image: categoryTwo,
+            title: "Installation & Setup",
+            description: "(Step-by-Step Guides & DIY Tips)",
+          },
+          {
+            image: categoryThree,
+            title: "Maintenance & Care",
+            description: "(Keeping Your Solar System Efficient)",
+          },
+          {
+            image: categoryFour,
+            title: "FInancing & Incentives",
+            description: "(Payment Plans & Government Policies)",
+          },
+          {
+            image: categoryFive,
+            title: "Troubleshooting & FAQs",
+            description: "(Common Issues & Fixes)",
+          },
+          {
+            image: categorySix,
+            title: "Solar Technology",
+            description: "(Latest Innovations & Trends)",
+          },
+          {
+            image: categorySeven,
+            title: "Solar Energy Policy",
+            description: "(Regulations & Incentives)",
+          },
+          {
+            image: categoryEight,
+            title: "Solar Community",
+            description: "(Connect with Other Solar Enthusiasts)",
+          },
+        ].map((category, index) => (
+          <Card
+            for="category"
+            key={index}
+            image={category.image}
+            title={category.title}
+            content={category.description}
+            link="#"
+          />
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
 
-  function BlogsSection() {
-    return (
-      <div className="section">
-        <h1 className="text-primary-500 mb-8 text-3xl font-bold">Blogs</h1>
+  const BlogsSection = () => (
+    <div className="section">
+      <h1 className="text-primary-500 mb-8 text-3xl font-bold">Blogs</h1>
 
-        <div className="grid w-full grid-cols-1 place-items-stretch justify-items-center gap-4 overflow-hidden sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {[
-            {
-              image: categoryOne,
-              title: "Getting Started",
-              description: "(Solar Baiscs & How it Works)",
-            },
-            {
-              image: categoryTwo,
-              title: "Installation & Setup",
-              description: "(Step-by-Step Guides & DIY Tips)",
-            },
-            {
-              image: categoryThree,
-              title: "Maintaince & Care",
-              description: "(Keeping Your Solar System Efficient)",
-            },
-            {
-              image: categoryFour,
-              title: "FInancing & Incentives",
-              description: "(Payment Plans & Government Ploicies)",
-            },
-          ].map((category, index) => (
-            <Card
-              for="category"
-              key={index}
-              image={category.image}
-              title={category.title}
-              content={category.description}
-              link="#"
-            />
-          ))}
-        </div>
+      <div className="grid w-full grid-cols-1 place-items-stretch justify-items-center gap-4 overflow-hidden sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {[
+          {
+            image: categoryOne,
+            title: "Getting Started",
+            description: "(Solar Basics & How it Works)",
+          },
+          {
+            image: categoryTwo,
+            title: "Installation & Setup",
+            description: "(Step-by-Step Guides & DIY Tips)",
+          },
+          {
+            image: categoryThree,
+            title: "Maintenance & Care",
+            description: "(Keeping Your Solar System Efficient)",
+          },
+          {
+            image: categoryFour,
+            title: "FInancing & Incentives",
+            description: "(Payment Plans & Government Policies)",
+          },
+        ].map((category, index) => (
+          <Card
+            for="category"
+            key={index}
+            image={category.image}
+            title={category.title}
+            content={category.description}
+            link="#"
+          />
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
 
   return (
     <>
-      <section className="solar__hub relative">
+      <section className="solar__hub full-bleed relative">
         <div className="h-[520px]">
           <img
             className="h-full w-screen object-cover"
