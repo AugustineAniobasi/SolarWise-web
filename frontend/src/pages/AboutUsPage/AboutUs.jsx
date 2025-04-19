@@ -56,7 +56,7 @@ export default function AboutUs() {
         </div>
       </div>
       <div>
-        <div className="about-us_blog m-auto max-w-[1200px] p-[2rem_4rem]">
+        <div className="about-us_blog section">
           <p className="mb-6">
             At SolarWise, we understand the daily challenges faced by millions
             across Africa due to unreliable electricity. Businesses pause,

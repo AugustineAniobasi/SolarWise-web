@@ -1,11 +1,91 @@
 .assessment-hero {
   background: url('../../assets/images/assessment-bg.jpeg') no-repeat;
   background-size: cover;
+  background-position: center;
   border-image: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%) fill 1;
 }
 
-.table-header > span {
+.appliance-table-header > span {
   flex-basis: 281px;
   padding: 0.5rem 1rem;
   text-align: center;
+}
+
+.appliance-table-row > * {
+  flex-basis: 281px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: #e9f0fc;
+  color: #818183;
+  border-radius: 8px;
+}
+
+.appliance-table-row > input::placeholder {
+  color: #818183;
+}
+
+.appliance-table-row > input:disabled::placeholder {
+  opacity: 0.5;
+}
+
+.appliance-table-footer > button {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  padding: 0.5rem 1rem;
+  background-color: #2266de;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.appliance-table-footer>button:hover {
+  background-color: #1f5dca;
+}
+
+.calculation-result {
+  flex-basis: 423px;
+  padding: 80px 24px;
+  border-radius: 8px;
+  background-color: #99b9f0;
+}
+
+.calculation-result > div {
+  background: #e9f0fc;
+  color: #0E2B5D;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.calculation-result > div:not(:first-child),
+.calculation-result>div:not(:last-child) {
+  margin-block: 32px
+}
+
+.add-appliance-form > label {
+  color: #818183;
+}
+
+.add-appliance-form > input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #e9f0fc;
+  color: #4c4c4d;
+  border: 1px solid #1f5dca;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
 }

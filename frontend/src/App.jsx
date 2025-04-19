@@ -55,7 +55,7 @@ function RootLayout() {
     <>
       {!isAuthPage && <Banner />}
       {!isAuthPage && <Header />}
-      <main>
+      <main className="wrapper">
         <Outlet />
       </main>
       {!isAuthPage && <Footer />}

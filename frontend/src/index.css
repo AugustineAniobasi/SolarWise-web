@@ -51,6 +51,18 @@ p {
   min-height: 100vh;
 }
 
+/* Layout */
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr min(1440px, 100%) 1fr;
+}
+.wrapper > * {
+  grid-column: 2;
+}
+.full-bleed {
+  grid-column: 1 / -1;
+}
+
 /* Custom Theme */
 
 @theme {
@@ -119,6 +131,17 @@ p {
   --color-neutral-700: #818183;
   --color-neutral-800: #646465;
   --color-neutral-900: #4c4c4d;
+
+  /* Breakpoint */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+}
+
+@layer components {
+  .section {
+    @apply p-[5rem_2rem] max-lg:p-[2rem_1rem];
+  }
 }
 
 :root {
