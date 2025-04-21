@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="wrapper bg-primary-700 rounded-t-[3rem] text-white">
       <div className="full-bleed p-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between max-md:flex-col max-md:items-start max-md:gap-8">
           <div className="max-w-sm text-left">
             <Link to="/" className="block">
               <img src={logo} alt="Solar Wise logo" />
@@ -19,7 +19,7 @@ export default function Footer() {
               SolarWise is more than just a platform—it’s a movement.
             </p>
           </div>
-          <div className="flex gap-14">
+          <div className="flex gap-14 max-md:flex-col max-md:gap-4">
             <ul className="footer-nav">
               <li>Company</li>
               <li>
