@@ -1,101 +1,72 @@
-"use client";
-
-import { MdMenu } from "react-icons/md";
-import logo from "../../assets/logo.svg";
+import logo from "@/assets/logo.svg";
+import { Menu, X } from "lucide-react";
 import Button from "../ButtonComponent";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react"; // Import useState
+import { useState } from "react";
+import "./Header.css";
+
+const menuItems = [
+  { to: "/", label: "Home" },
+  { to: "/about-us", label: "About Us" },
+  { to: "/solar-hub", label: "Solar Hub" },
+  { to: "/assessment-tool", label: "Assessment Tool" },
+];
+
+const linkStyles = "cursor-pointer text-lg font-medium text-neutral-900";
 
 export default function Header() {
-  const [open, setOpen] = useState(false); // Add state for the sheet
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
   return (
-    <header className="sticky top-0 z-[100] flex h-[80px] w-full items-center bg-white px-8">
-      <Link to="/" className="mr-auto block">
-        <img src={logo || "/placeholder.svg"} alt="Solar Wise logo" />
-      </Link>
+    <header className="sticky top-0 z-20 flex w-full items-center justify-between p-4 md:p-8">
+      <img src={logo} alt="Solarwise logo" />
 
-      <div className="flex items-center">
-        {/* Mobile navigation */}
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            {/* Replace Button with a simple button for testing */}
-            <button className="flex items-center justify-center p-2 lg:hidden">
-              <MdMenu className="h-6 w-6 cursor-pointer" />
-              <span className="sr-only">Toggle header menu</span>
-            </button>
-          </SheetTrigger>
-
-          <SheetContent side="left" className="w-full max-w-xs">
-            <HeaderNavLinks isMobile={true} closeSheet={() => setOpen(false)} />
-          </SheetContent>
-        </Sheet>
-
-        {/* Desktop navigation - hidden on mobile */}
-        <div className="hidden lg:block">
-          <HeaderNavLinks isMobile={false} />
+      <nav>
+        <ul className="hidden items-center gap-8 md:flex">
+          {menuItems.map((item, index) => (
+            <li key={index}>
+              <NavLink to={item.to} className={`${linkStyles}`}>
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        <div className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            className="relative z-100 cursor-pointer"
+          >
+            {isOpen ? <X /> : <Menu />}
+          </button>
         </div>
+
+        {
+          /* Mobile menu */
+          isOpen && (
+            <ul className="fixed inset-[0_0_0_30%] z-30 flex basis-full flex-col items-center justify-center gap-8 bg-white">
+              <li>
+                <NavLink to="/signup" className={`${linkStyles}`}>
+                  Get Started
+                </NavLink>
+              </li>
+              {menuItems.map((item, index) => (
+                <li key={index}>
+                  <NavLink to={item.to} className={`${linkStyles}`}>
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </nav>
+
+      <div className="hidden md:block">
+        <Button type="secondary" link="/signup">
+          Get Started
+        </Button>
       </div>
     </header>
-  );
-}
-
-function HeaderNavLinks({ isMobile, closeSheet }) {
-  return (
-    <nav
-      className={`flex ${isMobile ? "w-full flex-col items-center gap-[2rem] pt-[6rem]" : "flex-row items-center gap-16"}`}
-    >
-      <ul
-        id="primary-nav"
-        className={`flex ${isMobile ? "mx-auto flex-col items-center justify-center gap-[2rem]" : "flex-row items-center gap-4"}`}
-      >
-        {[
-          { path: "/", page: "Home" },
-          { path: "/about-us", page: "About Us" },
-          { path: "/solar-hub", page: "Solar Hub" },
-          { path: "/assessment-tool", page: "Assessment Tool" },
-          { path: "#register", page: "Register" },
-        ].map((item, index) => (
-          <li key={index}>
-            {item.path.startsWith("#") ? (
-              <a
-                href={item.path}
-                className="link"
-                onClick={isMobile && closeSheet ? closeSheet : undefined}
-              >
-                {item.page}
-              </a>
-            ) : (
-              <NavLink
-                to={item.path}
-                className={({ isActive }) =>
-                  isActive ? "nav-link link" : "link"
-                }
-                onClick={isMobile && closeSheet ? closeSheet : undefined}
-              >
-                {item.page}
-              </NavLink>
-            )}
-          </li>
-        ))}
-      </ul>
-
-      <ul
-        id="secondary-nav"
-        className={`flex ${isMobile ? "flex-col gap-8" : "flex-row"} items-center gap-2`}
-      >
-        <li>
-          <Button
-            type="secondary"
-            link="/sign-up"
-            onClick={isMobile && closeSheet ? closeSheet : undefined}
-          >
-            Get Started
-          </Button>
-        </li>
-      </ul>
-    </nav>
   );
 }

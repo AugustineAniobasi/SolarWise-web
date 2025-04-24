@@ -13,8 +13,8 @@ export function RoleSelection() {
 
   return (
     <div className="space-y-6">
-      <div className="text-center">
-        <h2 className="text-2xl font-bold">Choose Your Role</h2>
+      <div className="mt-4 text-center">
+        <h2 className="text-3xl font-bold">Choose Your Role</h2>
         <p className="text-muted-foreground mt-2">
           Select how you want to use our platform
         </p>
@@ -39,11 +39,11 @@ export function RoleSelection() {
                 <Label
                   htmlFor="customer"
                   className={`border-muted bg-popover hover:bg-accent hover:text-accent-foreground flex h-full cursor-pointer flex-col items-center justify-between rounded-md border-2 p-6 ${
-                    selectedRole === "customer" ? "border-primary" : ""
+                    selectedRole === "customer" ? "border-primary-500" : ""
                   }`}
                 >
-                  <UserRound className="mb-4 h-12 w-12 text-blue-500" />
-                  <CardTitle className="text-xl">Customer</CardTitle>
+                  <UserRound className="text-primary-500 mb-4 h-12 w-12" />
+                  <CardTitle className="text-2xl">Customer</CardTitle>
                   <CardDescription className="mt-2 text-center">
                     I want to find and hire service providers for my needs
                   </CardDescription>
@@ -59,11 +59,11 @@ export function RoleSelection() {
                 <Label
                   htmlFor="vendor"
                   className={`border-muted bg-popover hover:bg-accent hover:text-accent-foreground flex h-full cursor-pointer flex-col items-center justify-between rounded-md border-2 p-6 ${
-                    selectedRole === "vendor" ? "border-primary" : ""
+                    selectedRole === "vendor" ? "border-primary-500" : ""
                   }`}
                 >
-                  <Store className="mb-4 h-12 w-12 text-green-500" />
-                  <CardTitle className="text-xl">Vendor</CardTitle>
+                  <Store className="text-success-500 mb-4 h-12 w-12" />
+                  <CardTitle className="text-2xl">Vendor</CardTitle>
                   <CardDescription className="mt-2 text-center">
                     I want to offer my services and connect with customers
                   </CardDescription>

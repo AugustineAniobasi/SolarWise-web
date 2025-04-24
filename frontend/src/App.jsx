@@ -7,7 +7,7 @@ import AboutUs from "@/pages/AboutUsPage/AboutUs";
 import SolarHub from "@/pages/SolarHub/SolarHub";
 import AssessmentTool from "@/pages/AssessmentToolPage/AssessmentTool";
 import VendorPage from "@/pages/VendorPage/vendorPage";
-
+import RegisterPage from "./pages/Register";
 // Layouts
 
 function RootLayout() {
@@ -54,6 +54,7 @@ function App() {
           <Route path="/solar-hub" element={<SolarHub />} />
           <Route path="/assessment-tool" element={<AssessmentTool />} />
           <Route path="/vendor-page" element={<VendorPage />} />
+          <Route path="/signup" element={<RegisterPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

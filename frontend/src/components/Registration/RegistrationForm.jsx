@@ -11,6 +11,12 @@ import { Progress } from "@/components/ui/progress";
 import { Form } from "@/components/ui/form";
 
 import { RoleSelection } from "./steps/RoleSelection";
+import { AuthMethod } from "./steps/AuthMethod";
+import { BasicInfo } from "./steps/BasicInfo";
+import { VendorInfo } from "./steps/VendorInfo";
+import { DocumentUpload } from "./steps/DocumentUpload";
+import { TermsAndConditions } from "./steps/TermsAndConditions";
+import { ReviewSubmit } from "./steps/ReviewSubmit";
 
 const mySchema = z.object({
   role: z.enum(["vendor", "customer"]),
@@ -158,7 +164,7 @@ export function RegistrationForm() {
 
       // Redirect to login or dashboard
       setTimeout(() => {
-        navigate("/login");
+        navigate("/");
       }, 2000);
     } catch (error) {
       toast({
@@ -167,11 +173,12 @@ export function RegistrationForm() {
           "There was an error creating your account. Please try again.",
         variant: "destructive",
       });
+      console.log("Registration error:", error);
     }
   };
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto w-full max-w-3xl">
       <Card className="p-6">
         <div className="mb-6">
           <div className="mb-2 flex justify-between text-sm">
@@ -182,14 +189,61 @@ export function RegistrationForm() {
           </div>
           <Progress value={progress} className="h-2" />
         </div>
-      </Card>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            {/* Step 1: Role Selection */}
+            {step === 1 && <RoleSelection />}
 
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          {/* Step 1: Role Selection */}
-          {step === 1 && <RoleSelection />}
-        </form>
-      </Form>
+            {/* Step 2: Authentication Method */}
+            {step === 2 && <AuthMethod />}
+
+            {/* Step 3: Basic Information */}
+            {step === 3 && <BasicInfo />}
+
+            {/* Step 4: Vendor Information (only for vendors) */}
+            {step === 4 && role === "vendor" && <VendorInfo />}
+
+            {/* Step 5: Document Upload */}
+            {step === 5 && <DocumentUpload role={role} />}
+
+            {/* Step 6: Terms and Conditions */}
+            {step === 6 && <TermsAndConditions />}
+
+            {/* Step 7: Review and Submit */}
+            {step === 7 && <ReviewSubmit onSubmit={onSubmit} />}
+
+            {/* Navigation Buttons */}
+            <div className="mt-8 flex justify-between">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handlePrevious}
+                disabled={step === 1}
+                className="cursor-pointer"
+              >
+                Previous
+              </Button>
+
+              {step < totalSteps ? (
+                <Button
+                  type="button"
+                  onClick={handleNext}
+                  className="bg-primary-500 hover:bg-primary-400 cursor-pointer font-semibold text-white"
+                >
+                  Next
+                </Button>
+              ) : (
+                <Button
+                  type="submit"
+                  className="bg-success-600 hover:bg-success-700 cursor-pointer"
+                >
+                  Complete Registration
+                </Button>
+              )}
+            </div>
+          </form>
+        </Form>
+      </Card>
     </div>
   );
 }
