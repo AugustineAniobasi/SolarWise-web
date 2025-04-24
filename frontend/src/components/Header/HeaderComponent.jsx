@@ -88,20 +88,11 @@ function HeaderNavLinks({ isMobile, closeSheet }) {
       >
         <li>
           <Button
-            type="primary"
-            link="sign-in"
-            onClick={isMobile && closeSheet ? closeSheet : undefined}
-          >
-            Sign in
-          </Button>
-        </li>
-        <li>
-          <Button
             type="secondary"
-            link="sign-up"
+            link="/sign-up"
             onClick={isMobile && closeSheet ? closeSheet : undefined}
           >
-            Sign up - It's free
+            Get Started
           </Button>
         </li>
       </ul>
