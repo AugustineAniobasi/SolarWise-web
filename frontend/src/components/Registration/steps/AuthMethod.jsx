@@ -1,5 +1,5 @@
+import { useState } from "react"; 
 import { useFormContext } from "react-hook-form";
-
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -13,11 +13,69 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { auth, googleProvider } from "@/firebase";
+import { signInWithPopup } from "firebase/auth";
+import { toast } from "sonner"; // Using sonner for toasts (or use your preferred toast library)
 
 export function AuthMethod() {
+  const [userData, setUserData] = useState(null); // Add this state
   const form = useFormContext();
-  const { watch } = form;
+  const { watch, setValue } = form;
   const selectedAuthMethod = watch("authMethod");
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+
+      // Store user data in state
+      setUserData({
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL
+      });
+      
+      // Set form values with Google user data
+      setValue("email", user.email || "");
+      setValue("name", user.displayName || "");
+      setValue("authMethod", "google");
+      
+      toast.success(`Signed in as ${user.displayName || user.email}`);
+      
+      // You can add additional logic here like redirecting after sign-in
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+      toast.error("Failed to sign in with Google");
+    }
+  };
+
+  const renderUserProfile = () => (
+    <div className="mt-6 space-y-4 rounded-md border p-4 text-center">
+      <div className="flex flex-col items-center">
+        {userData.photoURL && (
+          <img 
+            src={userData.photoURL} 
+            alt="User profile" 
+            className="h-16 w-16 rounded-full"
+          />
+        )}
+        <h3 className="mt-2 text-lg font-semibold">
+          {userData.name || 'Google User'}
+        </h3>
+        <p className="text-muted-foreground text-sm">
+          {userData.email}
+        </p>
+      </div>
+      <Button 
+        className="w-full"
+        onClick={() => {
+          toast.success("Registration completed!");
+        }}
+      >
+        Continue Registration
+      </Button>
+    </div>
+  );
 
   return (
     <div className="space-y-6">
@@ -49,6 +107,7 @@ export function AuthMethod() {
                   className={`border-muted bg-popover hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-md border-2 p-4 ${
                     selectedAuthMethod === "google" ? "border-primary-500" : ""
                   }`}
+                  onClick={handleGoogleSignIn} // Added click handler here
                 >
                   <div className="flex items-center gap-4">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
@@ -78,9 +137,7 @@ export function AuthMethod() {
                     </div>
                     <div className="text-left">
                       <CardTitle className="text-lg">Google</CardTitle>
-                      <CardDescription>
-                        Sign up with your Google account
-                      </CardDescription>
+                      <CardDescription>Sign up with your Google account</CardDescription>
                     </div>
                   </div>
                 </Label>
@@ -152,17 +209,18 @@ export function AuthMethod() {
 
       {selectedAuthMethod === "google" && (
         <div className="mt-6 text-center">
+           {userData ? (
+            renderUserProfile()
+          ) : (
+          <>
           <p className="text-muted-foreground mb-4 text-sm">
-            You'll be prompted to sign in with Google in the next step
+            Click the button below to sign in with Google
           </p>
           <Button
             type="button"
             variant="outline"
             className="flex w-full max-w-sm items-center justify-center gap-2"
-            onClick={() => {
-              // This would typically trigger the Google OAuth flow
-              console.log("Google sign-in clicked");
-            }}
+            onClick={handleGoogleSignIn}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -189,6 +247,9 @@ export function AuthMethod() {
             </svg>
             Continue with Google
           </Button>
+          </>
+          )}
+
         </div>
       )}
     </div>
