@@ -11,20 +11,44 @@ import lumos from "../../assets/images/lumos.png";
 import solynta from "../../assets/images/solynta.png";
 import "./Home.css";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+// import { Navigation, Autoplay, Mousewheel } from "swiper/modules";
+import { useRef } from "react";
+
+
+
 export default function Home() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  // };
+
+  const swiperRef = useRef(null);
+  
+  const handleNext = () => {
+    if (swiperRef.current && swiperRef.current.slideNext) {
+      swiperRef.current.slideNext();
+    }
   };
+
+  const handlePrev = () => {
+    if (swiperRef.current && swiperRef.current.slidePrev) {
+      swiperRef.current.slidePrev();
+    }
+  };
+  
 
   return (
     <>
       {/* Hero section */}
       <div className="p-[5rem_2rem]">
-        <div className="m-auto flex w-fit items-center gap-6">
+        <div className="m-auto flex w-fit flex-col items-center gap-6 md:flex-row">
           <div className="max-w-[560px]">
             <h1 className="mb-10 text-[64px] font-semibold">
               Find the <span className="text-primary-500">Right Solar</span>{" "}
@@ -56,7 +80,7 @@ export default function Home() {
           Do You Know?
         </p>
         <div>
-          <Slider {...settings}>
+          {/* <Slider {...settings}>
             {educationPost.map((post) => (
               <Card
                 key={post.id}
@@ -67,7 +91,65 @@ export default function Home() {
                 link={post.link}
               />
             ))}
-          </Slider>
+          </Slider> */}
+
+          <div className="relative mx-auto w-full px-4">
+            <Swiper
+              spaceBetween={10}
+              slidesPerView={3.5}
+              loop={true}
+              speed={1000}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              // modules={[Autoplay, Navigation, Mousewheel]}
+              mousewheel={{ forceToAxis: true }}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              breakpoints={{
+                320: { slidesPerView: 1, spaceBetween: 10 },
+                640: { slidesPerView: 2, spaceBetween: 10 },
+                768: { slidesPerView: 3, spaceBetween: 10 },
+                1024: { slidesPerView: 4, spaceBetween: 10 },
+              }}
+              className="swiper-container"
+            >
+              {educationPost.map((post, index) => (
+                <SwiperSlide key={index}>
+                  <div className="relative h-[400px] w-full max-w-[578px] overflow-hidden rounded-[1rem] text-white">
+                    <Card
+                      key={post.id}
+                      for="blog"
+                      image={post.image}
+                      title={post.title}
+                      content={post.summary}
+                      link={post.link}
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Custom navigation buttons */}
+            <button
+              type="button"
+              className="absolute top-1/2 -left-4 z-[10] flex h-8 w-8 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-100"
+              onClick={handlePrev}
+              aria-label="Previous slide"
+            >
+              <span className="text-sm font-bold">&lt;</span>
+            </button>
+            <button
+              type="button"
+              className="absolute top-1/2 -right-4 z-[10] flex h-8 w-8 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-100"
+              onClick={handleNext}
+              aria-label="Next slide"
+            >
+              <span className="text-sm font-bold">&gt;</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -76,7 +158,7 @@ export default function Home() {
         <h2 className="text-primary-500 mb-20 text-[32px] font-semibold">
           Solar Need Assessment Tool
         </h2>
-        <div className="m-auto flex w-fit items-center gap-6">
+        <div className="m-auto flex w-fit flex-col items-center gap-6 md:flex-row">
           <img
             className="max-w-[588px]"
             src={assessment}
@@ -107,7 +189,7 @@ export default function Home() {
         <h2 className="text-primary-500 mb-4 text-[32px] font-semibold">
           Our Vendors
         </h2>
-        <div className="flex items-center justify-center gap-[124px]">
+        <div className="flex flex-col items-center justify-center gap-[124px] md:flex-row">
           <img src={sunKing} alt="" />
           <img src={lumos} alt="" />
           <img src={solynta} alt="" />

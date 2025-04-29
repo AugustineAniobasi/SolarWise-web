@@ -244,11 +244,12 @@ function MediaCarousel({ title, items, isVideo = false }) {
   return (
     <section className="videos__article__section relative">
       <div className="h-full w-full bg-gradient-to-r from-[#2267de] via-[#2267de9c] to-[#2267de] px-[1rem] py-[2rem]">
-        <div className="m-auto w-full pl-[5.5rem]">
+        <div className="m-auto w-full lg:pl-[5.5rem]"
+        >
           <h1 className="mb-3 text-3xl font-bold text-white">{title}</h1>
 
           <div
-            className="relative w-full px-4"
+            className="relative mx-auto w-full px-4"
           >
             <Swiper
               spaceBetween={10}

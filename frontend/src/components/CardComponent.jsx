@@ -14,25 +14,43 @@ import Button from "./ButtonComponent";
 export default function Card(props) {
   const cardContent = (
     <div
-      className={`flex h-[415px] max-w-[304px] flex-col items-start gap-6 overflow-hidden rounded-[1rem] ${props.for === "blog" ? "bg-white tracking-[-0.18px] text-neutral-800" : "bg-[#f4f4f4] transition-transform duration-300 hover:scale-105"} pb-6`}
+      className={`flex h-full w-full flex-col overflow-hidden rounded-xl shadow-md transition-transform duration-300 md:max-w-[320px] ${
+        props.for === "blog"
+          ? "bg-white text-neutral-800"
+          : "bg-[#f4f4f4] hover:scale-[1.03]"
+      }`}
     >
-      <img src={props.image} alt="" />
-      <div className="flex flex-1 flex-col px-[18px] text-left">
-        <div className="flex-1">
-          <h3 className="text-primary-500 mb-4 text-lg font-bold">
-            {props.title}
-          </h3>
-          <p className="text-sm font-normal">{props.content}</p>
-        </div>
-        {props.for === "blog" ? (
-          <div>
-            <Button type="primary" link={props.link}>
-              Read more
-            </Button>
+      {/* Image Part */}
+      <div className="flex h-[150px] w-full items-center justify-center bg-gray-100 ">
+        <img
+          src={props.image}
+          alt={props.title}
+          className="h-full w-full object-cover"
+        />
+      </div>
+
+      {/* Content Part */}
+      <div className="flex flex-1 flex-col px-5 py-4 text-left">
+        <div className="flex h-full flex-col justify-between">
+          {/* Text Content */}
+          <div className="mb-auto flex-1">
+            <h3 className="text-primary-500 mb-3 text-lg leading-tight font-semibold">
+              {props.title}
+            </h3>
+            <p className="text-sm leading-relaxed text-gray-600">
+              {props.content}
+            </p>
           </div>
-        ) : (
-          ""
-        )}
+
+          {/* Read More Button */}
+          {props.for === "blog" && (
+            <div className="mt-4">
+              <Button type="primary" link={props.link}>
+                Read more
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

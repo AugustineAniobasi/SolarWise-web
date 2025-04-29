@@ -8,10 +8,14 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-700 rounded-t-[3rem] text-white">
-      <div className="container mx-auto p-8">
-        <div className="flex items-center justify-between">
-          <div className="max-w-sm text-left">
+    <footer className="bg-primary-700 text-white md:rounded-t-[3rem]">
+      <div
+        className="container p-2 md:mx-auto md:p-8"
+      >
+        <div
+          className="flex w-full flex-col w-full justify-between md:flex-row md:items-center"
+        >
+          <div className="w-full max-w-[400px] text-left">
             <Link to="/" className="block">
               <img src={logo} alt="Solar Wise logo" />
             </Link>
@@ -19,7 +23,7 @@ export default function Footer() {
               SolarWise is more than just a platform—it’s a movement.
             </p>
           </div>
-          <div className="flex gap-14">
+          <div className="flex w-full flex-col items-start gap-9 md:flex-row md:gap-14">
             <ul className="footer-nav">
               <li>Company</li>
               <li>
@@ -65,7 +69,7 @@ export default function Footer() {
           <div className="bg-primary-100 h-[1px]"></div>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex flex-col flex-col-reverse justify-between gap-8 md:flex-row">
           <small>&copy; 2025 Solar Wise. All rights reserved</small>
 
           <div className="social-link flex items-center gap-2.5">
